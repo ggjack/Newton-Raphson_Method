@@ -10,7 +10,8 @@ int main(int argc, char* argv[]){
 	int decimal;
 	string terms;
 	vector<string> function;
-	vector
+	vector<double> hold;
+	vector<vector<double>> values;
 	cout << "Please enter a value for x0, to approximate the root: " ;
 	cin >> x0;
 	cout << endl << "Now please enter the number of digits you want to be shown: ";
@@ -19,5 +20,26 @@ int main(int argc, char* argv[]){
 	while(cin >> terms){
 		function.push_back(terms);
 	}
-	
+	for(int i=0;i<terms.size();i++){
+		if(terms.at(i).contains("x"){
+			if(terms.at(i).find("x")==0){
+				hold.push_back(1);
+			}
+			else{
+				hold.push_back(stod(terms.at(i).substr(0,terms.at(i).find("x"))));
+			}
+			if(terms.at(i).contains("^")){
+				hold.push_back(stod(terms.at(i).substr(terms.at(i).find("^")+1)));
+			}
+			else{
+				hold.push_back(1.0);
+			}
+		}
+		else{
+			hold.push_back(stod(terms.at(i)));
+			hold.push_back(0.0);
+		}
+		values.push_back(hold);
+		hold.clear();
+	}	
 }
