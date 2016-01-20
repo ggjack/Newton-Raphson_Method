@@ -2,16 +2,29 @@
 #include <vector>
 #include <string>
 #include <iomanip>
+#include <cmath>
 
 using namespace std;
 
+int findx(string y){
+	for(int a=0; a<y.length();a++){
+		if(y.substr(a,1)=="x") return 1;
+	}
+	return 0;
+}
+int findc(string y){
+        for(int a=0; a<y.length();a++){
+                 if(y.substr(a,1)=="^") return 1;
+         }
+         return 0;
+}
 int main(int argc, char* argv[]){
 	double x0,f,fp;
 	int decimal,iter;
 	string terms;
 	vector<string> function;
 	vector<double> hold;
-	vector<vector<double>> values;
+	vector<vector<double> > values;
 	cout << "Please enter a value for x0, to approximate the root: " ;
 	cin >> x0;
 	cout << endl << "Now please enter the number of digits you want to be shown: ";
@@ -21,14 +34,14 @@ int main(int argc, char* argv[]){
 		function.push_back(terms);
 	}
 	for(int i=0;i<terms.size();i++){
-		if(terms.at(i).contains("x"){
-			if(terms.at(i).find("x")==0){
+		if(findx(temrms.at(i))){
+			if(terms.at(i).substr(0,1)=="x"){
 				hold.push_back(1);
 			}
 			else{
 				hold.push_back(stod(terms.at(i).substr(0,terms.at(i).find("x"))));
 			}
-			if(terms.at(i).contains("^")){
+			if(findc(terms.at(i)){
 				hold.push_back(stod(terms.at(i).substr(terms.at(i).find("^")+1)));
 			}
 			else{
@@ -42,15 +55,16 @@ int main(int argc, char* argv[]){
 		values.push_back(hold);
 		hold.clear();
 	}	
-	cout >> "c0 = " >> c0 >> endl;
+	cout << "x0 = " << x0 << endl;
 	for(int k=1;k<=iter;k++){
 		f=0;
-		fp=0
+		fp=0;
 		for(int j=0;j<values.size();j++){
 			f+=(values.at(j).at(0)*pow(x0,values.at(j).at(1)));
 			if(values.at(j).at(1)!=0.0)fp+=(values.at(j).at(0)*values.at(j).at(1)*pow(x0,values.at(j).at(1)-1));
 		}
 		x0=x0-f/fp;
-		cout << "c" << k << " = " << x0; 
+		cout << "x" << k << " = "; 
+		cout << setprecision(decimal)  <<  x0 << endl; 
 	}
 }
