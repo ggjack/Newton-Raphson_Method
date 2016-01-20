@@ -6,8 +6,8 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-	double x0;
-	int decimal;
+	double x0,f,fp;
+	int decimal,iter;
 	string terms;
 	vector<string> function;
 	vector<double> hold;
@@ -42,4 +42,13 @@ int main(int argc, char* argv[]){
 		values.push_back(hold);
 		hold.clear();
 	}	
+	cout >> "c0 = " >> c0 >> endl;
+	for(int k=1;k<=iter;k++){
+		f=0;
+		fp=0
+		for(int j=0;j<values.size();j++){
+		f+=(values.at(0)*pow(x0,values.at(1)));
+		if(values.at(1)!=0.0)fp+=();
+		} 
+	}
 }
