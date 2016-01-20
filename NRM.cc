@@ -47,8 +47,10 @@ int main(int argc, char* argv[]){
 		f=0;
 		fp=0
 		for(int j=0;j<values.size();j++){
-		f+=(values.at(0)*pow(x0,values.at(1)));
-		if(values.at(1)!=0.0)fp+=();
-		} 
+			f+=(values.at(j).at(0)*pow(x0,values.at(j).at(1)));
+			if(values.at(j).at(1)!=0.0)fp+=(values.at(j).at(0)*values.at(j).at(1)*pow(x0,values.at(j).at(1)-1));
+		}
+		x0=x0-f/fp;
+		cout << "c" << k << " = " << x0; 
 	}
 }
